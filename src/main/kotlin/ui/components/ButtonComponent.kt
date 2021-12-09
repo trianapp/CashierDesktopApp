@@ -13,6 +13,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 
+/**
+ * Component button
+ * Created By Trian Damai
+ * https://github.com/triandamai
+ * Created At 09/12/21 23.55
+ */
 
 @Composable
 fun ButtonPrimary(

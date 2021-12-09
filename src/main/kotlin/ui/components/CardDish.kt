@@ -23,6 +23,12 @@ import compose.icons.Octicons
 import compose.icons.octicons.Pencil16
 import compose.icons.octicons.Pencil24
 
+/**
+ * Card dish
+ * Created By Trian Damai
+ * https://github.com/triandamai
+ * Created At 09/12/21 23.55
+ */
 @Composable
 fun CardDish(
     modifier: Modifier =Modifier
