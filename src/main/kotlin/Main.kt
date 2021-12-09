@@ -2,6 +2,8 @@
 import androidx.compose.desktop.DesktopMaterialTheme
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -34,6 +36,8 @@ fun App() {
             ButtonSecondaryIcon(Icons.Default.Add){}
             ButtonPrimaryTextIcon("Confirm Payment",Icons.Default.Add){}
             ButtonSecondaryTextIcon("Confirm Payment",Icons.Default.Add){}
+            Spacer(modifier = Modifier.height(10.dp))
+            CardDish()
         }
 
 

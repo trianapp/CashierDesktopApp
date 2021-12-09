@@ -19,6 +19,7 @@ repositories {
 dependencies {
     testImplementation(kotlin("test"))
     implementation(compose.desktop.currentOs)
+    implementation("br.com.devsrsouza.compose.icons.jetbrains:octicons:1.0.0")
 }
 
 tasks.test {
