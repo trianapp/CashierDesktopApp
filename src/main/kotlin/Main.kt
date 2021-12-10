@@ -38,6 +38,7 @@ fun App() {
         ) {
 
 
+            CardItemsCart()
             CardDish()
             CardSummary()
             Spacer(modifier = Modifier.height(10.dp))
