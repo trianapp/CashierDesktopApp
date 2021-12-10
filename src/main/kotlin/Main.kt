@@ -40,6 +40,8 @@ fun App() {
         ) {
 
 
+            CardItems()
+            Spacer(modifier = Modifier.height(10.dp))
             CardItemMostOrder()
             Spacer(modifier = Modifier.height(10.dp))
             CardRow()
