@@ -36,15 +36,17 @@ fun App() {
                 orientation = Orientation.Vertical
             ),
         ) {
+
+
+            CardDish()
+            CardSummary()
+            Spacer(modifier = Modifier.height(10.dp))
             ButtonPrimary(text="Confirm Payment"){}
             ButtonSecondary(text = "Cancel"){}
             ButtonPrimaryIcon(Icons.Default.Add){}
             ButtonSecondaryIcon(Icons.Default.Add){}
             ButtonPrimaryTextIcon("Confirm Payment",Icons.Default.Add){}
             ButtonSecondaryTextIcon("Confirm Payment",Icons.Default.Add){}
-            Spacer(modifier = Modifier.height(10.dp))
-            CardDish()
-            CardSummary()
         }
 
 
