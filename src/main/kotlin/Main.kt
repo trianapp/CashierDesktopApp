@@ -35,10 +35,14 @@ fun App() {
             modifier = Modifier.padding(all=16.dp).scrollable(
                 state = rememberScrollableState { 0f },
                 orientation = Orientation.Vertical
-            ).background(ColorBackground2),
+            )
+                //.background(ColorBackground2),
         ) {
 
 
+
+            CardRow()
+            Spacer(modifier = Modifier.height(10.dp))
             CardItemContent(active = false)
             Spacer(modifier = Modifier.height(10.dp))
             CardItemContent(active = true)
