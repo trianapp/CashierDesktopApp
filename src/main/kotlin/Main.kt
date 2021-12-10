@@ -1,6 +1,7 @@
 // Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 import androidx.compose.desktop.DesktopMaterialTheme
 import androidx.compose.desktop.ui.tooling.preview.Preview
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.gestures.scrollable
@@ -34,12 +35,18 @@ fun App() {
             modifier = Modifier.padding(all=16.dp).scrollable(
                 state = rememberScrollableState { 0f },
                 orientation = Orientation.Vertical
-            ),
+            ).background(ColorBackground2),
         ) {
 
 
+            CardItemContent(active = false)
+            Spacer(modifier = Modifier.height(10.dp))
+            CardItemContent(active = true)
+            Spacer(modifier = Modifier.height(10.dp))
             CardItemsCart()
+            Spacer(modifier = Modifier.height(10.dp))
             CardDish()
+            Spacer(modifier = Modifier.height(10.dp))
             CardSummary()
             Spacer(modifier = Modifier.height(10.dp))
             ButtonPrimary(text="Confirm Payment"){}
