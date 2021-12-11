@@ -5,10 +5,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.rememberScrollableState
 import androidx.compose.foundation.gestures.scrollable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -21,6 +19,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
+import androidx.compose.ui.window.WindowSize
+import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import ui.components.*
 
@@ -31,7 +31,7 @@ fun App() {
     DesktopMaterialTheme(
         typography = Barrow
     ) {
-        Column(
+        LazyColumn (
             modifier = Modifier.padding(all=16.dp).scrollable(
                 state = rememberScrollableState { 0f },
                 orientation = Orientation.Vertical
@@ -39,37 +39,80 @@ fun App() {
                 //.background(ColorBackground2),
         ) {
 
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                Row {
+                    CardContentPayment(active = true)
+                    Spacer(modifier = Modifier.width(10.dp))
+                    CardContentPayment(active = false)
+                }
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                ButtonTab(text = "To Go", active = false)
+                Spacer(modifier = Modifier.height(10.dp))
+                ButtonTab(text = "Hot Dishes", active = true)
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                CardItems()
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                CardItemMostOrder()
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                CardRow()
 
-            CardItems()
-            Spacer(modifier = Modifier.height(10.dp))
-            CardItemMostOrder()
-            Spacer(modifier = Modifier.height(10.dp))
-            CardRow()
-            Spacer(modifier = Modifier.height(10.dp))
-            CardItemContent(active = false)
-            Spacer(modifier = Modifier.height(10.dp))
-            CardItemContent(active = true)
-            Spacer(modifier = Modifier.height(10.dp))
-            CardItemsCart()
-            Spacer(modifier = Modifier.height(10.dp))
-            CardDish()
-            Spacer(modifier = Modifier.height(10.dp))
-            CardSummary()
-            Spacer(modifier = Modifier.height(10.dp))
-            ButtonPrimary(text="Confirm Payment"){}
-            ButtonSecondary(text = "Cancel"){}
-            ButtonPrimaryIcon(Icons.Default.Add){}
-            ButtonSecondaryIcon(Icons.Default.Add){}
-            ButtonPrimaryTextIcon("Confirm Payment",Icons.Default.Add){}
-            ButtonSecondaryTextIcon("Confirm Payment",Icons.Default.Add){}
-        }
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                CardItemContent(active = false)
+
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                CardItemContent(active = true)
+
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                CardItemsCart()
+
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                CardDish()
+
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                CardSummary()
+
+            }
+            item {
+                Spacer(modifier = Modifier.height(10.dp))
+                ButtonPrimary(text="Confirm Payment"){}
+                ButtonSecondary(text = "Cancel"){}
+                ButtonPrimaryIcon(Icons.Default.Add){}
+                ButtonSecondaryIcon(Icons.Default.Add){}
+                ButtonPrimaryTextIcon("Confirm Payment",Icons.Default.Add){}
+                ButtonSecondaryTextIcon("Confirm Payment",Icons.Default.Add){}
+            }
+
+
+           }
 
 
     }
 }
 
 fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
+    Window(
+        onCloseRequest = ::exitApplication,
+        state = WindowState(size = WindowSize(1290.dp,800.dp))
+    ) {
         App()
     }
 }
