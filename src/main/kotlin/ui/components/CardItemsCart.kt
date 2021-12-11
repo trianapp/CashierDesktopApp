@@ -38,112 +38,115 @@ fun CardItemsCart(
     var text by remember {
         mutableStateOf("")
     }
-Box(
-    modifier=modifier
-        .width(361.dp)
-        .height(106.dp)
-) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        Column(
-            modifier=modifier.width(297.dp),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.Start
+    Column {
+        Spacer(modifier=modifier.height(16.dp))
+        Box(
+            modifier=modifier
+                .width(361.dp)
+                .height(106.dp)
         ) {
-            Box(
-                modifier=modifier.fillMaxWidth()
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                Row(
-                    modifier=modifier.align(Alignment.CenterStart)
+                Column(
+                    modifier=modifier.width(297.dp),
+                    verticalArrangement = Arrangement.SpaceBetween,
+                    horizontalAlignment = Alignment.Start
                 ) {
-                    Image(
-                        modifier=modifier.size(40.dp),
-                        painter = painterResource("images/dummy_item.png"),
-                        contentDescription = ""
+                    Box(
+                        modifier=modifier.fillMaxWidth()
+                    ) {
+                        Row(
+                            modifier=modifier.align(Alignment.CenterStart)
+                        ) {
+                            Image(
+                                modifier=modifier.size(40.dp),
+                                painter = painterResource("images/dummy_item.png"),
+                                contentDescription = ""
+                            )
+                            Spacer(modifier.width(10.dp))
+                            Column {
+                                Text(
+                                    "Spicy Seasoned Rice",
+                                    style = MaterialTheme.typography.body1,
+                                    color = ColorTextGray
+                                )
+                                Spacer(modifier.height(8.dp))
+                                Text("$ 2.29")
+                            }
+                        }
+                        Box(
+                            modifier=modifier
+                                .align(Alignment.CenterEnd)
+                                .size(48.dp)
+                                .clip(RoundedCornerShape(8.dp))
+                                .background(ColorBackgroundDarkLine)
+                        ) {
+                            Text(
+                                "2",
+                                modifier=modifier.align(Alignment.Center),
+                                color = ColorTextGray
+                            )
+                        }
+                    }
+                    Spacer(modifier.height(10.dp))
+                    TextField(
+                        text,
+                        modifier = modifier
+                            .fillMaxWidth()
+                            .height(48.dp),
+                        onValueChange = {
+                            text=it
+                        },
+                        placeholder={
+                            Text(
+                                "Order Note",
+                                color = ColorTextGray
+                            )
+                        },
+                        singleLine=true,
+                        colors = TextFieldDefaults.textFieldColors(
+                            backgroundColor = ColorBackgroundDarkLine,
+                            cursorColor = ColorTextGray,
+                            disabledLabelColor = ColorBackgroundDarkLine,
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            textColor = ColorTextGray
+                        ),
+                        shape = RoundedCornerShape(8.dp)
                     )
-                    Spacer(modifier.width(10.dp))
-                    Column {
+                }
+                Spacer(modifier.width(8.dp))
+                Column(
+                    modifier=modifier.fillMaxHeight(),
+                    verticalArrangement = Arrangement.SpaceBetween,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Column(
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier=modifier.size(48.dp),
+                    ) {
                         Text(
-                            "Spicy Seasoned Rice",
+                            "$ 4.5",
+                            textAlign= TextAlign.Center,
                             style = MaterialTheme.typography.body1,
                             color = ColorTextGray
                         )
-                        Spacer(modifier.height(8.dp))
-                        Text("$ 2.29")
+                    }
+                    OutlinedButton(
+                        onClick={},
+                        modifier=modifier.size(48.dp),
+                        colors= ButtonDefaults.outlinedButtonColors(
+                            backgroundColor = Color.Transparent
+                        ),
+                        border = BorderStroke(width = 1.dp, color = ColorPrimary)
+                    ){
+                        Icon(Octicons.Trash16, tint = ColorPrimary, contentDescription = "")
                     }
                 }
-                Box(
-                    modifier=modifier
-                        .align(Alignment.CenterEnd)
-                        .size(48.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(ColorBackgroundDarkLine)
-                ) {
-                    Text(
-                        "2",
-                        modifier=modifier.align(Alignment.Center),
-                        color = ColorTextGray
-                    )
-                }
-            }
-            Spacer(modifier.height(10.dp))
-            TextField(
-                    text,
-                    modifier = modifier
-                        .fillMaxWidth()
-                        .height(48.dp),
-                    onValueChange = {
-                        text=it
-                    },
-                    placeholder={
-                        Text(
-                            "Order Note",
-                            color = ColorTextGray
-                        )
-                    },
-                    singleLine=true,
-                    colors = TextFieldDefaults.textFieldColors(
-                        backgroundColor = ColorBackgroundDarkLine,
-                        cursorColor = ColorTextGray,
-                        disabledLabelColor = ColorBackgroundDarkLine,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent,
-                        textColor = ColorTextGray
-                    ),
-                    shape = RoundedCornerShape(8.dp)
-                )
-        }
-        Spacer(modifier.width(8.dp))
-        Column(
-            modifier=modifier.fillMaxHeight(),
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-           Column(
-               verticalArrangement = Arrangement.Center,
-               horizontalAlignment = Alignment.CenterHorizontally,
-               modifier=modifier.size(48.dp),
-           ) {
-               Text(
-               "$ 4.5",
-               textAlign= TextAlign.Center,
-               style = MaterialTheme.typography.body1,
-               color = ColorTextGray
-                )
-           }
-            OutlinedButton(
-                onClick={},
-                modifier=modifier.size(48.dp),
-                colors= ButtonDefaults.outlinedButtonColors(
-                    backgroundColor = Color.Transparent
-                ),
-                border = BorderStroke(width = 1.dp, color = ColorPrimary)
-            ){
-                Icon(Octicons.Trash16, tint = ColorPrimary, contentDescription = "")
             }
         }
     }
-}
 }

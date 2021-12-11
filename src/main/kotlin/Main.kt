@@ -1,6 +1,7 @@
 // Copyright 2000-2021 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 import androidx.compose.desktop.DesktopMaterialTheme
 import androidx.compose.desktop.ui.tooling.preview.Preview
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.rememberScrollableState
@@ -25,6 +26,7 @@ import androidx.compose.ui.window.application
 import ui.components.*
 import ui.pages.HomePage
 
+@ExperimentalFoundationApi
 @Composable
 @Preview
 fun App() {
@@ -110,10 +112,11 @@ fun App() {
     }
 }
 
+@ExperimentalFoundationApi
 fun main() = application {
     Window(
         onCloseRequest = ::exitApplication,
-        state = WindowState(size = WindowSize(1290.dp,800.dp))
+        state = WindowState(size = WindowSize(1194.dp,800.dp))
     ) {
         App()
     }

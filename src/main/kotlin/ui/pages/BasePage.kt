@@ -57,7 +57,11 @@ class BasePageUI{
     @sidbarRight
     @Composable
     fun sidebarRight(content:@Composable ()->Unit) {
-        content.invoke()
+        Column(
+            modifier = Modifier.fillMaxHeight().width(409.dp).background(ColorBackground2)
+        ) {
+            content.invoke()
+        }
     }
 
 }
