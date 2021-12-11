@@ -6,6 +6,7 @@ import ColorBackgroundDarkLine
 import ColorTextGray
 import ColorWhite
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -115,6 +116,7 @@ modifier: Modifier=Modifier
                         .clickable {
                             expandMenu= true
                         }
+                        .border(width = 1.dp, shape = RoundedCornerShape(6.dp), color = ColorTextGray)
                         .clip(RoundedCornerShape(6.dp))
                         .background(ColorBackground2)
                         .padding(all = 10.dp)

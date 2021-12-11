@@ -41,7 +41,8 @@ fun TextTab(
             TabRowDefaults.Indicator(
                 modifier = Modifier
                     .customTabIndicatorOffset(tabPositions[tabSelected])
-                    .clip(shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)),
+                    //.clip(shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp))
+                        ,
                 height = 4.dp,
                 color = ColorPrimary
             )
