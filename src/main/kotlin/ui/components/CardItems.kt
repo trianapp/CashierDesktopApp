@@ -25,44 +25,47 @@ import androidx.compose.ui.unit.dp
 fun CardItems(
     modifier: Modifier=Modifier
 ) {
-    Box(
-        modifier=modifier
-            .width(192.dp)
-            .height(260.dp)
-    ){
-
-        Column(
+    Column {
+        Spacer(modifier.height(8.dp))
+        Box(
             modifier=modifier
-                .align(Alignment.BottomCenter)
-                .clip(RoundedCornerShape(10.dp))
-                .background(ColorBackground2)
                 .width(192.dp)
-                .height(226.dp).padding(bottom = 14.dp),
-            verticalArrangement = Arrangement.Bottom,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                "Spicy Seasoned",
-                color = ColorWhite
-            )
-            Text(
-                "Seafood noodles",
-                color = ColorWhite)
-            Spacer(modifier=modifier.height(10.dp))
-            Text(
-                "$ 2.29",
-                color = ColorTextGray
-            )
-            Spacer(modifier=modifier.height(10.dp))
-            Text(
-                "200 bowls available",
-                color = ColorTextGray
+                .height(260.dp)
+        ){
+            Column(
+                modifier=modifier
+                    .align(Alignment.BottomCenter)
+                    .clip(RoundedCornerShape(10.dp))
+                    .background(ColorBackground2)
+                    .width(192.dp)
+                    .height(226.dp).padding(bottom = 14.dp),
+                verticalArrangement = Arrangement.Bottom,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    "Spicy Seasoned",
+                    color = ColorWhite
+                )
+                Text(
+                    "Seafood noodles",
+                    color = ColorWhite)
+                Spacer(modifier=modifier.height(10.dp))
+                Text(
+                    "$ 2.29",
+                    color = ColorTextGray
+                )
+                Spacer(modifier=modifier.height(10.dp))
+                Text(
+                    "200 bowls available",
+                    color = ColorTextGray
+                )
+            }
+            Image(
+                painter = painterResource("images/dummy_item.png"),
+                contentDescription = "",
+                modifier=modifier.size(132.dp).align(Alignment.TopCenter)
             )
         }
-        Image(
-            painter = painterResource("images/dummy_item.png"),
-            contentDescription = "",
-            modifier=modifier.size(132.dp).align(Alignment.TopCenter)
-        )
+        Spacer(modifier.height(8.dp))
     }
 }

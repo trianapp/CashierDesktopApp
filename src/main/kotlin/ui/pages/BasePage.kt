@@ -1,8 +1,13 @@
 package ui.pages
 
-import androidx.compose.foundation.layout.Row
+import ColorBackground1
+import ColorBackground2
+import ColorBackgroundDarkLine
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 
 /**
  * BasePage
@@ -24,13 +29,29 @@ annotation class sidbarRight
 class BasePageUI{
     @sidbarLeft
     @Composable
-    fun sidebarLeft(content:@Composable ()->Unit)=
-        content.invoke()
+    fun sidebarLeft(content:@Composable ()->Unit){
+        Column (modifier=Modifier
+            .fillMaxHeight()
+            .width(104.dp)
+            .background(ColorBackground2)
+        ){
+            content.invoke()
+        }
+    }
 
     @content
     @Composable
     fun content(content:@Composable ()->Unit) {
-        content.invoke()
+        Box(
+            modifier = Modifier.padding(horizontal = 25.dp)
+        ){
+            Column(
+                modifier = Modifier.width(633.dp).padding(top = 20.dp, bottom = 20.dp)
+            ) {
+                content.invoke()
+            }
+        }
+
     }
 
     @sidbarRight
@@ -49,7 +70,9 @@ fun BasePage(
 ){
     val ui = BasePageUI()
 
-    Row {
+    Row(modifier = modifier
+        .fillMaxSize()
+        .background(ColorBackground1)) {
         content.invoke(ui)
     }
 

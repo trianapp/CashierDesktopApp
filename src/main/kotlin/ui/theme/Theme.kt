@@ -9,6 +9,7 @@ import androidx.compose.ui.text.platform.DesktopFont
 import androidx.compose.ui.text.platform.Font
 import androidx.compose.ui.unit.sp
 
+
 val ColorPrimary = Color(0xFFEA7C69)
 val ColorSecondary = Color(0xFF9288E0)
 val ColorWhite = Color(0xFFFFFFFF)
