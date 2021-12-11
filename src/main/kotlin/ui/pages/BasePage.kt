@@ -5,9 +5,14 @@ import ColorBackground2
 import ColorBackgroundDarkLine
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import ui.components.CardItemsCart
+import ui.components.FooterCart
+import ui.components.HeaderCart
 
 /**
  * BasePage
@@ -56,12 +61,28 @@ class BasePageUI{
 
     @sidbarRight
     @Composable
-    fun sidebarRight(content:@Composable ()->Unit) {
-        Column(
-            modifier = Modifier.fillMaxHeight().width(409.dp).background(ColorBackground2)
+    fun sidebarRight(
+        header:@Composable ()->Unit,
+        footer:@Composable ()->Unit,
+        content:@Composable ()->Unit
+    ) {
+        Scaffold(
+            backgroundColor = ColorBackground2,
+            topBar = {
+               header.invoke()
+            },
+            bottomBar = {
+                footer.invoke()
+            }
         ) {
-            content.invoke()
+            Column(
+                modifier = Modifier.fillMaxHeight().width(409.dp).background(ColorBackground2)
+            ) {
+                content.invoke()
+            }
+
         }
+
     }
 
 }

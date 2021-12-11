@@ -44,7 +44,7 @@ modifier: Modifier=Modifier
         mutableStateOf(false)
     }
     var selectedMenu by remember {
-        mutableStateOf("DinIn")
+        mutableStateOf("Din In")
     }
     Column(
 
@@ -115,7 +115,7 @@ modifier: Modifier=Modifier
                         .clickable {
                             expandMenu= true
                         }
-                        .clip(RoundedCornerShape(8.dp))
+                        .clip(RoundedCornerShape(6.dp))
                         .background(ColorBackground2)
                         .padding(all = 10.dp)
 
@@ -158,5 +158,6 @@ modifier: Modifier=Modifier
                 }
             }
         }
+        Spacer(modifier.height(6.dp))
     }
 }

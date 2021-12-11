@@ -3,10 +3,7 @@ package ui.pages
 import ColorBackground2
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyVerticalGrid
@@ -43,26 +40,25 @@ fun HomePage(
                 })
             }
         }
-        sidebarRight {
-           Scaffold(
-               backgroundColor = ColorBackground2,
-               topBar = {
-                   HeaderCart()
-               },
-               bottomBar = {
-
-               }
-           ) {
-               LazyColumn(
-                   modifier=modifier.padding(
-                       horizontal = 16.dp
-                   )
-               ) {
-                   items(count = 8, itemContent = {
-                       CardItemsCart()
-                   })
-               }
-           }
+        sidebarRight(
+            header = {
+                HeaderCart()
+            },
+            footer = {
+                FooterCart()
+            }) {
+            LazyColumn(
+                modifier=modifier.padding(
+                    horizontal = 16.dp
+                )
+            ) {
+                items(count = 8, itemContent = {
+                    CardItemsCart()
+                })
+                item {
+                    Spacer(modifier=modifier.height(200.dp))
+                }
+            }
         }
     }
 }

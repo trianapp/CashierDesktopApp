@@ -5,6 +5,8 @@ import ColorPrimary
 import ColorWhite
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -179,21 +181,26 @@ fun ButtonTab(
     text: String,
     active:Boolean
 ){
-    Box(
-        modifier=modifier
-            .clip(RoundedCornerShape(8.dp))
-            .background(if(active) ColorPrimary else ColorBackground2)
-            .padding(
-                start = 10.dp,
-                end = 10.dp,
-                top = 10.dp,
-                bottom = 10.dp
+    Row(modifier=modifier) {
+        Spacer(modifier.width(5.dp))
+        Box(
+            modifier=modifier
+                .clip(RoundedCornerShape(6.dp))
+                .border(width = if(active) 0.dp else 1.dp, color = ColorPrimary, shape = RoundedCornerShape(6.dp))
+                .background(if(active) ColorPrimary else ColorBackground2)
+                .clickable {  }
+                .padding(
+                    start = 10.dp,
+                    end = 10.dp,
+                    top = 10.dp,
+                    bottom = 10.dp
+                )
+        ) {
+            Text(
+                text,
+                color = if(active) ColorWhite else  ColorPrimary,
+                modifier = modifier.align(Alignment.Center)
             )
-    ) {
-        Text(
-            text,
-            color = if(active) ColorWhite else  ColorPrimary,
-            modifier = modifier.align(Alignment.Center)
-        )
+        }
     }
 }

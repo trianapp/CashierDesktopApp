@@ -31,14 +31,14 @@ fun HeaderCart(
             color = ColorWhite,
             style = MaterialTheme.typography.h2
         )
-        Spacer(modifier=modifier.height(10.dp))
+        Spacer(modifier=modifier.height(16.dp))
         LazyRow {
             items(count = listItem.size, itemContent = {
                 index->
                 ButtonTab(text=listItem[index], active = ((index%2)==0))
             })
         }
-        Spacer(modifier=modifier.height(10.dp))
+        Spacer(modifier=modifier.height(16.dp))
         Row(
             horizontalArrangement = Arrangement.Start,
             modifier = modifier.fillMaxWidth()

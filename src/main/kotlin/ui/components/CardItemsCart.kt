@@ -73,7 +73,10 @@ fun CardItemsCart(
                                     color = ColorTextGray
                                 )
                                 Spacer(modifier.height(8.dp))
-                                Text("$ 2.29")
+                                Text(
+                                    "$ 2.29",
+                                    color=ColorTextGray
+                                )
                             }
                         }
                         Box(
