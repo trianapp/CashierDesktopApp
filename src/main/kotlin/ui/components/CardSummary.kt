@@ -34,8 +34,7 @@ fun CardSummary(
     Box (
         modifier=modifier
             .wrapContentHeight()
-            .width(230.dp)
-            .padding(all = 20.dp)
+            .width(200.dp)
             .clip(RoundedCornerShape(8.dp))
             .background(ColorBackground2),
     ) {
@@ -73,7 +72,7 @@ fun CardSummary(
             Spacer(modifier=modifier.height(16.dp))
             Text(
                 "$10,243.00",
-                style=MaterialTheme.typography.h1,
+                style=MaterialTheme.typography.h2,
                 color = ColorWhite
             )
             Spacer(modifier=modifier.height(10.dp))

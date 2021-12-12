@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import ui.components.CardItemsCart
 import ui.components.FooterCart
@@ -46,14 +47,26 @@ class BasePageUI{
 
     @content
     @Composable
-    fun content(content:@Composable ()->Unit) {
+    fun content(
+        header: @Composable () -> Unit,
+        footer: @Composable () -> Unit,
+        content:@Composable ()->Unit
+    ) {
         Box(
-            modifier = Modifier.padding(horizontal = 25.dp)
+            modifier = Modifier
+                .padding(horizontal = 25.dp)
         ){
             Column(
-                modifier = Modifier.width(633.dp).padding(top = 20.dp, bottom = 20.dp)
+                modifier = Modifier
+                    .width(633.dp)
+                    .padding(
+                        top = 20.dp,
+                        bottom = 20.dp
+                    )
             ) {
+                header.invoke()
                 content.invoke()
+                footer.invoke()
             }
         }
 
@@ -62,12 +75,13 @@ class BasePageUI{
     @sidbarRight
     @Composable
     fun sidebarRight(
+        backgroundColor:Color=ColorBackground2,
         header:@Composable ()->Unit,
         footer:@Composable ()->Unit,
         content:@Composable ()->Unit
     ) {
         Scaffold(
-            backgroundColor = ColorBackground2,
+            backgroundColor = backgroundColor,
             topBar = {
                header.invoke()
             },
@@ -76,7 +90,7 @@ class BasePageUI{
             }
         ) {
             Column(
-                modifier = Modifier.fillMaxHeight().width(409.dp).background(ColorBackground2)
+                modifier = Modifier.fillMaxHeight().width(409.dp).background(backgroundColor)
             ) {
                 content.invoke()
             }

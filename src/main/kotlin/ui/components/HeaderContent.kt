@@ -30,7 +30,7 @@ import compose.icons.octicons.Search16
  * https://github.com/triandamai
  * Created At 11/12/21 20.40
  */
-var menus = listOf("Din In","Out door","In door")
+
 @Composable
 fun HeaderContent(
 modifier: Modifier=Modifier
@@ -41,12 +41,7 @@ modifier: Modifier=Modifier
     var tabSelected by remember {
         mutableStateOf(0)
     }
-    var expandMenu by remember {
-        mutableStateOf(false)
-    }
-    var selectedMenu by remember {
-        mutableStateOf("Din In")
-    }
+
     Column(
 
     ) {
@@ -110,55 +105,8 @@ modifier: Modifier=Modifier
                 style = MaterialTheme.typography.h2,
 
             )
-            Box {
-                Row(
-                    modifier=modifier
-                        .clickable {
-                            expandMenu= true
-                        }
-                        .border(width = 1.dp, shape = RoundedCornerShape(6.dp), color = ColorTextGray)
-                        .clip(RoundedCornerShape(6.dp))
-                        .background(ColorBackground2)
-                        .padding(all = 10.dp)
+            DropDownButton()
 
-                ) {
-                    Icon(
-                        Octicons.ChevronDown16,
-                        tint = ColorWhite,
-                        contentDescription = ""
-                    )
-                    Spacer(modifier.width(6.dp))
-                    Text(
-                        "$selectedMenu",
-                        modifier = modifier,
-                        color = ColorWhite
-                    )
-                }
-                DropdownMenu(
-                    expanded = expandMenu,
-                    modifier = modifier.background(ColorBackground2),
-                    onDismissRequest = {
-                        expandMenu=false
-                    }
-                ){
-                    menus.forEach {
-                        DropdownMenuItem(
-                            onClick = {
-                                expandMenu=false
-                                selectedMenu=it
-                            },
-                            modifier=modifier.background(ColorBackground2)
-                        ){
-                            Text(
-                                it,
-                                color = ColorWhite
-                            )
-                        }
-                    }
-
-
-                }
-            }
         }
         Spacer(modifier.height(6.dp))
     }

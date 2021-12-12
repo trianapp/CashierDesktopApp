@@ -1,6 +1,7 @@
 package ui.pages
 
 import ColorBackground2
+import ColorWhite
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -32,8 +33,13 @@ fun HomePage(
         sidebarLeft {
 
         }
-        content {
-            HeaderContent()
+        content(
+            header = {
+                HeaderContent()
+            },
+            footer = {}
+        ) {
+
             LazyVerticalGrid(cells = GridCells.Fixed(3)){
                 items(count = 10, itemContent = {
                     CardItems()
@@ -41,6 +47,7 @@ fun HomePage(
             }
         }
         sidebarRight(
+            backgroundColor = ColorWhite,
             header = {
                 HeaderCart()
             },

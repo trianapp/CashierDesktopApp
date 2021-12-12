@@ -22,6 +22,7 @@ fun CardItemMostOrder(
 ) {
     Row(
         modifier=modifier
+            .padding(top = 6.dp, bottom = 6.dp)
             .width(271.dp)
             .height(56.dp)
     ) {

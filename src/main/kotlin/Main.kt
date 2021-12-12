@@ -24,6 +24,7 @@ import androidx.compose.ui.window.WindowSize
 import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import ui.components.*
+import ui.pages.DashboardPage
 import ui.pages.HomePage
 
 @ExperimentalFoundationApi
@@ -34,81 +35,8 @@ fun App() {
     DesktopMaterialTheme(
         typography = Barrow
     ) {
-//        LazyColumn (
-//            modifier = Modifier.padding(all=16.dp).scrollable(
-//                state = rememberScrollableState { 0f },
-//                orientation = Orientation.Vertical
-//            )
-//                //.background(ColorBackground2),
-//        ) {
-//
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                Row {
-//                    CardContentPayment(active = true)
-//                    Spacer(modifier = Modifier.width(10.dp))
-//                    CardContentPayment(active = false)
-//                }
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                ButtonTab(text = "To Go", active = false)
-//                Spacer(modifier = Modifier.height(10.dp))
-//                ButtonTab(text = "Hot Dishes", active = true)
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                CardItems()
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                CardItemMostOrder()
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                CardRow()
-//
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                CardItemContent(active = false)
-//
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                CardItemContent(active = true)
-//
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                CardItemsCart()
-//
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                CardDish()
-//
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                CardSummary()
-//
-//            }
-//            item {
-//                Spacer(modifier = Modifier.height(10.dp))
-//                ButtonPrimary(text="Confirm Payment"){}
-//                ButtonSecondary(text = "Cancel"){}
-//                ButtonPrimaryIcon(Icons.Default.Add){}
-//                ButtonSecondaryIcon(Icons.Default.Add){}
-//                ButtonPrimaryTextIcon("Confirm Payment",Icons.Default.Add){}
-//                ButtonSecondaryTextIcon("Confirm Payment",Icons.Default.Add){}
-//            }
-//
-//
-//           }
-
-        HomePage()
-
+        //HomePage()
+        DashboardPage()
     }
 }
 

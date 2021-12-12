@@ -28,7 +28,8 @@ fun CardRow(
     Row(
         modifier=modifier
             .background(ColorBackground2)
-            .width(598.dp)
+            .padding(start = 16.dp, end = 16.dp)
+            .fillMaxWidth()
             .height(66.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
@@ -58,16 +59,6 @@ fun CardRow(
             color = ColorTextGray
         )
 
-        Box(
-            modifier = modifier
-                .clip(RoundedCornerShape(14.dp))
-                .background(ColorAccentGreen.copy(alpha = 0.2f))
-                .padding(horizontal = 6.dp, vertical = 4.dp)
-        ) {
-            Text(
-                "Completed",
-                color = ColorAccentGreen
-            )
-        }
+        ItemStatus()
     }
 }
