@@ -26,6 +26,7 @@ import androidx.compose.ui.window.application
 import ui.components.*
 import ui.pages.DashboardPage
 import ui.pages.HomePage
+import ui.pages.SettingPage
 
 @ExperimentalFoundationApi
 @Composable
@@ -36,7 +37,8 @@ fun App() {
         typography = Barrow
     ) {
         //HomePage()
-        DashboardPage()
+        //DashboardPage()
+        SettingPage()
     }
 }
 
