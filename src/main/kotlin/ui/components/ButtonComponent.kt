@@ -1,12 +1,17 @@
 package ui.components
 
+import ColorBackground2
 import ColorPrimary
 import ColorWhite
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -167,5 +172,35 @@ fun ButtonSecondaryIcon(
         border = BorderStroke(width = 1.dp, color = ColorPrimary)
     ){
         Icon(icon, tint = ColorPrimary, contentDescription = "")
+    }
+}
+
+@Composable
+fun ButtonTab(
+    modifier: Modifier=Modifier,
+    text: String,
+    active:Boolean
+){
+    Row(modifier=modifier) {
+        Spacer(modifier.width(5.dp))
+        Box(
+            modifier=modifier
+                .clip(RoundedCornerShape(6.dp))
+                .border(width = if(active) 0.dp else 1.dp, color = ColorPrimary, shape = RoundedCornerShape(6.dp))
+                .background(if(active) ColorPrimary else ColorBackground2)
+                .clickable {  }
+                .padding(
+                    start = 10.dp,
+                    end = 10.dp,
+                    top = 10.dp,
+                    bottom = 10.dp
+                )
+        ) {
+            Text(
+                text,
+                color = if(active) ColorWhite else  ColorPrimary,
+                modifier = modifier.align(Alignment.Center)
+            )
+        }
     }
 }
