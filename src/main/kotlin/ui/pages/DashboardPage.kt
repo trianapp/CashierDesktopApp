@@ -19,11 +19,15 @@ import ui.components.*
 
 @Composable
 fun DashboardPage() {
-    BasePage {
-        sidebarLeft {  }
-        content(
-            header = { HeaderDashboard() },
-            footer = {}
+    BaseContent {
+        left(
+            size = 633.dp,
+            paddingStart = 10.dp,
+            paddingEnd = 10.dp,
+            paddingTop = 10.dp,
+            paddingBottom = 10.dp,
+            header = {
+                HeaderDashboard() }
         ) {
             LazyColumn {
                 item {
@@ -45,13 +49,16 @@ fun DashboardPage() {
                 })
             }
         }
-        sidebarRight(
-            backgroundColor = ColorBackground1,
-            header = {},
-            footer = {}
-        ){
+        right(
+            size = 409.dp,
+            paddingStart = 10.dp,
+            paddingEnd = 10.dp,
+            paddingTop = 10.dp,
+            paddingBottom = 10.dp,
+        ) {
             CardContentMostOrdered()
             CardCntentMostTypeOrdered()
         }
     }
+
 }

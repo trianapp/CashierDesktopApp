@@ -2,10 +2,12 @@ package ui.components
 
 import ColorBackground2
 import ColorPrimary
+import ColorTextGray
 import ColorTextLight
 import ColorWhite
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -33,58 +35,63 @@ import compose.icons.octicons.Pencil24
 fun CardDish(
     modifier: Modifier =Modifier
 ){
-    Column (
-        modifier=modifier
-            .clip(RoundedCornerShape(8.dp))
-            .wrapContentHeight()
-            .width(221.dp)
-            .background(ColorBackground2),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ){
+   Box (
+       modifier=modifier.padding(all = 10.dp)
+           ){
+       Column (
+           modifier=modifier
+               .clip(RoundedCornerShape(8.dp))
+               .border(width = 1.dp, color = ColorTextGray.copy(alpha = 0.4f), shape = RoundedCornerShape(8.dp))
+               .wrapContentHeight()
+               .width(221.dp)
+               .height(299.dp)
+               .background(ColorBackground2),
+           verticalArrangement = Arrangement.SpaceBetween,
+           horizontalAlignment = Alignment.CenterHorizontally
+       ){
+           Spacer(modifier=modifier.height(16.dp))
+           Image(
+               painterResource("images/dummy_item.png"), contentDescription = ""
+           )
+           Spacer(modifier=modifier.height(16.dp))
+           Column(horizontalAlignment = Alignment.CenterHorizontally) {
+               Text(
+                   "Spicy seasoned",
+                   color = ColorWhite
+               )
+               Text("seafood noodles", color = ColorWhite)
+               Spacer(modifier.height(10.dp))
+               Row {
+                   Text("$ 2.29",
+                       color = ColorTextLight
+                   )
+                   Text(" . ",
+                       color = ColorTextLight
+                   )
 
-        Spacer(modifier=modifier.height(16.dp))
-        Image(
-                painterResource("images/dummy_item.png"), contentDescription = ""
-        )
-        Spacer(modifier=modifier.height(16.dp))
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    "Spicy seasoned",
-                    color = ColorWhite
-                )
-                Text("seafood noodles", color = ColorWhite)
-                Spacer(modifier.height(10.dp))
-                Row {
-                    Text("$ 2.29",
-                        color = ColorTextLight
-                    )
-                    Text(" . ",
-                        color = ColorTextLight
-                    )
+                   Text("20 Bowls",
+                       color = ColorTextLight)
+               }
+           }
+           Spacer(modifier=modifier.height(16.dp))
+           Row(modifier=modifier
+               .fillMaxWidth()
+               .height(50.dp)
+               .background(ColorPrimary.copy(alpha = 0.3f))
+               .clickable {  },
+               horizontalArrangement = Arrangement.Center,
+               verticalAlignment = Alignment.CenterVertically
+           ) {
 
-                    Text("20 Bowls",
-                        color = ColorTextLight)
-                }
-            }
-        Spacer(modifier=modifier.height(16.dp))
-        Row(modifier=modifier
-            .fillMaxWidth()
-            .height(50.dp)
-            .background(ColorPrimary.copy(alpha = 0.3f))
-            .clickable {  },
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-
-                Icon(Octicons.Pencil16,contentDescription = "", tint = ColorPrimary)
-                Spacer(modifier=modifier.width(8.dp))
-                Text(
-                    "Edit dish",
-                    color=ColorPrimary,
-                    style=MaterialTheme.typography.button,
-                    textAlign = TextAlign.Center
-                )
-        }
-    }
+               Icon(Octicons.Pencil16,contentDescription = "", tint = ColorPrimary)
+               Spacer(modifier=modifier.width(8.dp))
+               Text(
+                   "Edit dish",
+                   color=ColorPrimary,
+                   style=MaterialTheme.typography.button,
+                   textAlign = TextAlign.Center
+               )
+           }
+       }
+   }
 }

@@ -6,10 +6,14 @@ import ColorBackgroundDarkLine
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Scaffold
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ui.components.CardItemsCart
 import ui.components.FooterCart
@@ -25,15 +29,95 @@ import ui.components.HeaderCart
 
 
 @DslMarker
-annotation class sidbarLeft
+annotation class sidebar
 @DslMarker
 annotation class content
+
 @DslMarker
-annotation class sidbarRight
+annotation class leftSide
+@DslMarker
+annotation class rightSide
+
+class BasePageContent{
+    @leftSide
+    @Composable
+    fun left(
+        size:Dp=0.dp,
+        paddingStart:Dp=0.dp,
+        paddingEnd:Dp=0.dp,
+        paddingTop:Dp=0.dp,
+        paddingBottom:Dp=0.dp,
+        backgroundColor: Color=ColorBackground1,
+        header: @Composable () -> Unit ={},
+        footer: @Composable () -> Unit={},
+        content: @Composable () -> Unit
+    ){
+
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .background(backgroundColor)
+                .padding(
+                    top = paddingTop,
+                    bottom = paddingBottom,
+                    start = paddingStart,
+                    end = paddingEnd
+                )
+        ){
+            Column(
+                modifier = Modifier
+                    .width(size)
+            ) {
+                header.invoke()
+                content.invoke()
+                footer.invoke()
+            }
+        }
+
+    }
+
+    @rightSide
+    @Composable
+    fun right(
+        size:Dp=0.dp,
+        paddingStart:Dp=0.dp,
+        paddingEnd:Dp=0.dp,
+        paddingTop:Dp=0.dp,
+        paddingBottom:Dp=0.dp,
+        backgroundColor: Color=ColorBackground1,
+        header: @Composable () -> Unit={},
+        footer: @Composable () -> Unit={},
+        content:@Composable () -> Unit
+    ){
+
+        Box(
+            modifier = Modifier
+                .clip(RoundedCornerShape(8.dp))
+                .background(backgroundColor)
+                .padding(
+                    top = paddingTop,
+                    bottom = paddingBottom,
+                    start = paddingStart,
+                    end = paddingEnd
+                )
+        ){
+            Column(
+                modifier = Modifier
+                    .width(size)
+
+            ) {
+                header.invoke()
+                content.invoke()
+                footer.invoke()
+            }
+        }
+
+    }
+}
 
 
 class BasePageUI{
-    @sidbarLeft
+    @sidebar
     @Composable
     fun sidebarLeft(content:@Composable ()->Unit){
         Column (modifier=Modifier
@@ -48,125 +132,33 @@ class BasePageUI{
     @content
     @Composable
     fun content(
-        header: @Composable () -> Unit,
-        footer: @Composable () -> Unit,
-        content:@Composable ()->Unit
+        content:@Composable BasePageContent.()->Unit
     ) {
+        val baseContent = BasePageContent()
+
         Box(
             modifier = Modifier
-                .padding(horizontal = 25.dp)
         ){
-            Column(
+            Row  (
                 modifier = Modifier
-                    .width(633.dp)
-                    .padding(
-                        top = 20.dp,
-                        bottom = 20.dp
-                    )
+                    .fillMaxWidth()
             ) {
-                header.invoke()
-                content.invoke()
-                footer.invoke()
+                content.invoke(baseContent)
             }
-        }
-
-    }
-
-    @sidbarRight
-    @Composable
-    fun sidebarRight(
-        backgroundColor:Color=ColorBackground2,
-        header:@Composable ()->Unit,
-        footer:@Composable ()->Unit,
-        content:@Composable ()->Unit
-    ) {
-        Scaffold(
-            backgroundColor = backgroundColor,
-            topBar = {
-               header.invoke()
-            },
-            bottomBar = {
-                footer.invoke()
-            }
-        ) {
-            Column(
-                modifier = Modifier.fillMaxHeight().width(409.dp).background(backgroundColor)
-            ) {
-                content.invoke()
-            }
-
         }
 
     }
 
 }
 
-class BaseSettingPageUI{
-    @sidbarLeft
-    @Composable
-    fun sidebarLeft(content:@Composable ()->Unit){
-        Column (modifier=Modifier
-            .fillMaxHeight()
-            .width(104.dp)
-            .background(ColorBackground2)
-        ){
-            content.invoke()
-        }
-    }
-
-    @content
-    @Composable
-    fun content(
-        header: @Composable () -> Unit,
-        footer: @Composable () -> Unit,
-        content:@Composable ()->Unit
-    ) {
-        Box(
-            modifier = Modifier
-                .padding(horizontal = 25.dp)
-        ){
-            Column(
-                modifier = Modifier
-                    .width(633.dp)
-                    .padding(
-                        top = 20.dp,
-                        bottom = 20.dp
-                    )
-            ) {
-                header.invoke()
-                content.invoke()
-                footer.invoke()
-            }
-        }
-
-    }
-
-    @sidbarRight
-    @Composable
-    fun sidebarRight(
-        backgroundColor:Color=ColorBackground2,
-        header:@Composable ()->Unit,
-        footer:@Composable ()->Unit,
-        content:@Composable ()->Unit
-    ) {
-
-        Scaffold(
-            backgroundColor = backgroundColor,
-            topBar = {
-                header.invoke()
-            },
-            bottomBar = {
-                footer.invoke()
-            }
-        ) {
-            Column(
-                modifier = Modifier.fillMaxHeight().width(409.dp).background(backgroundColor)
-            ) {
-                content.invoke()
-            }
-
-        }
-
+@Composable
+fun BaseContent(
+    modifier: Modifier=Modifier,
+    content:@Composable BasePageContent.() -> Unit
+){
+    val ct = BasePageContent()
+    Row {
+        content.invoke(ct)
     }
 
 }

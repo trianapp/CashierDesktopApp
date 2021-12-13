@@ -14,6 +14,8 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import compose.icons.Octicons
+import compose.icons.octicons.*
 import ui.components.*
 
 /**
@@ -29,43 +31,61 @@ import ui.components.*
 fun HomePage(
     modifier: Modifier=Modifier
 ){
-    BasePage {
-        sidebarLeft {
 
-        }
-        content(
-            header = {
-                HeaderContent()
-            },
-            footer = {}
-        ) {
-
-            LazyVerticalGrid(cells = GridCells.Fixed(3)){
-                items(count = 10, itemContent = {
-                    CardItems()
-                })
-            }
-        }
-        sidebarRight(
-            backgroundColor = ColorWhite,
-            header = {
-                HeaderCart()
-            },
-            footer = {
-                FooterCart()
-            }) {
-            LazyColumn(
-                modifier=modifier.padding(
-                    horizontal = 16.dp
-                )
+        BaseContent {
+            left(
+                size = 633.dp,
+                paddingStart = 10.dp,
+                paddingEnd = 10.dp,
+                paddingBottom = 16.dp,
+                paddingTop = 16.dp,
+                header = {
+                    HeaderContent()
+                }
             ) {
-                items(count = 8, itemContent = {
-                    CardItemsCart()
-                })
-                item {
-                    Spacer(modifier=modifier.height(200.dp))
+                LazyVerticalGrid(cells = GridCells.Fixed(3)) {
+                    items(count = 10, itemContent = {
+                        CardItems()
+                    })
                 }
             }
+            right(
+                size = 409.dp,
+                paddingStart = 10.dp,
+                paddingEnd = 10.dp,
+                backgroundColor = ColorBackground2,
+            ) {
+                Scaffold(
+                    backgroundColor = ColorBackground2,
+                    topBar = {
+                        HeaderCart()
+                    },
+                    bottomBar = {
+                        FooterCart()
+                    }
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxHeight()
+                    ) {
+                        LazyColumn(
+                            modifier = Modifier.padding(
+                                horizontal = 16.dp
+                            )
+                        ) {
+                            items(count = 8, itemContent = {
+                                CardItemsCart()
+                            })
+                            item {
+                                Spacer(modifier = Modifier.height(200.dp))
+                            }
+                        }
+
+                    }
+
+                }
+
+            }
+
         }
-    }
+
 }

@@ -62,7 +62,7 @@ fun CardItemContent(
         Box(modifier
             .align(Alignment.CenterEnd)
             .height(39.dp)
-            .width(4.dp)
+            .width(2.dp)
             .clip(RoundedCornerShape(20.dp))
             .background(ColorPrimary)
         ) {  }

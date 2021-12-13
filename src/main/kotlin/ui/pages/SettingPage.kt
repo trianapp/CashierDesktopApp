@@ -29,43 +29,64 @@ import ui.components.*
 fun SettingPage(
     modifier: Modifier=Modifier
 ){
-    BasePage {
-        sidebarLeft {
+   Column (
 
-        }
-        content(
-            header = {
-                HeaderContent()
-            },
-            footer = {}
-        ) {
+   ) {
+       HeaderSetting()
+       BaseContent {
+        Row {
+            Spacer(modifier.width(16.dp))
+            left(
+                size = 260.dp,
+                backgroundColor = ColorBackground2
+            ){
 
-            LazyVerticalGrid(cells = GridCells.Fixed(3)){
-                items(count = 10, itemContent = {
-                    CardItems()
-                })
-            }
-        }
-        sidebarRight(
-            backgroundColor = ColorWhite,
-            header = {
-                HeaderCart()
-            },
-            footer = {
-                FooterCart()
-            }) {
-            LazyColumn(
-                modifier=modifier.padding(
-                    horizontal = 16.dp
-                )
-            ) {
-                items(count = 8, itemContent = {
-                    CardItemsCart()
-                })
-                item {
-                    Spacer(modifier=modifier.height(200.dp))
+                LazyColumn() {
+                    items(count = 7, itemContent = {
+                            index->
+                        CardItemContent(active = index==3)
+                    })
+
                 }
+
+            }
+            Spacer(modifier.width(16.dp))
+            right(
+                size=743.dp,
+                backgroundColor = ColorBackground2,
+                paddingStart = 16.dp,
+                paddingEnd = 16.dp,
+                paddingBottom = 16.dp,
+                paddingTop = 16.dp,
+            ) {
+                Scaffold(
+                    backgroundColor = ColorBackground2,
+                    modifier = modifier.height(633.dp),
+                    topBar = {
+                        HeaderContentSetting()
+                    },
+                    bottomBar = {
+                        FooterContentSetting()
+                    }
+                ) {
+                    Column(
+                        modifier = Modifier.fillMaxHeight()
+                    ) {
+                        LazyVerticalGrid(
+                            modifier=modifier.fillMaxWidth(),
+                            cells = GridCells.Fixed(3)
+                        ){
+                            items(count = 10, itemContent = {
+                                CardDish()
+                            })
+                        }
+
+                    }
+
+                }
+
             }
         }
-    }
+       }
+   }
 }
